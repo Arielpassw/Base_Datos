@@ -27,6 +27,16 @@ CREATE TABLE usuario (
     estado VARCHAR(10) NOT NULL CHECK (estado IN ('Activo', 'Inactivo'))
 );
 
+-- Modificación de la Tabla usuarios 
+ALTER TABLE usuario
+ADD COLUMN password_hash VARCHAR(255);
+
+UPDATE usuario 
+SET password_hash = '$2y$10$KbG3Yd1h9UO3mL7k1dQy.eOvF/2cZP9dP5JfY2dVw6hL6d6fW6vAi'
+WHERE correo = 'juan@mail.com';
+
+SELECT correo, password_hash FROM usuario WHERE correo='juan@mail.com';
+
 -- Tabla libro
 CREATE TABLE libro (
     id_libro SERIAL PRIMARY KEY,
@@ -238,6 +248,25 @@ TO uopjjbtugtnt5ilyi0t3;
 GRANT SELECT ON
 libro, autor, categoria
 TO uopjjbtugtnt5ilyi0t3;
+
+
+-- INDICES --
+CREATE INDEX idx_usuario_cedula ON usuario(cedula);
+CREATE INDEX idx_libro_titulo ON libro(titulo);
+CREATE INDEX idx_prestamo_estado ON prestamo(estado);
+CREATE INDEX idx_prestamo_usuario ON prestamo(id_usuario);
+
+-- EXPLAIN --
+--SIN EXPLAIN--
+SELECT * FROM prestamo WHERE estado = 'Prestado';
+-- CON EXPLAIN -- 
+EXPLAIN
+SELECT * FROM prestamo WHERE estado = 'Prestado';
+
+
+
+
+
 
 
 
