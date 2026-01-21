@@ -31,11 +31,36 @@ CREATE TABLE usuario (
 ALTER TABLE usuario
 ADD COLUMN password_hash VARCHAR(255);
 
-
 UPDATE usuario 
 SET password_hash = '$2y$10$4Ex8zFpAzqgwABV680497eBhNp61RGRjizPGxVFa6pDO8wlVK9kBC'
 WHERE correo = 'juan@mail.com';
 SELECT correo, password_hash FROM usuario WHERE correo='juan@mail.com';
+
+UPDATE usuario
+SET password_hash = crypt('admin123', gen_salt('bf'))
+WHERE correo = 'ana@mail.com';
+
+ALTER TABLE usuario
+DROP CONSTRAINT IF EXISTS usuario_tipo_usuario_check;
+
+ALTER TABLE usuario
+ADD CONSTRAINT usuario_tipo_usuario_check
+CHECK (tipo_usuario IN ('Admin', 'Estudiante', 'Docente', 'Externo'));
+
+INSERT INTO usuario (
+    nombre, apellido, cedula, correo, telefono,
+    tipo_usuario, password_hash, estado
+) VALUES (
+    'Prueba',
+    'Admin',
+    '1231231231',
+    'pruebaadmin@mail.com',
+    '0998888888',
+    'Admin',
+    crypt('Test123', gen_salt('bf')),
+    'Activo'
+);
+
 
 select * from usuario u ;
 
@@ -378,6 +403,7 @@ SELECT * FROM auditoria ORDER BY fecha DESC;
 
 
 select * from usuario u 
+
 
 
 
