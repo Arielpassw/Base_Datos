@@ -1,0 +1,474 @@
+/* =======================
+   Estilos generales
+======================= */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9; /* Fondo neutro */
+    color: #2c3e50;
+}
+
+/* =======================
+   Navbar superior
+======================= */
+.navbar {
+    background: #34495e; /* Azul grisáceo tipo biblioteca */
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar h2 {
+    margin: 0;
+    font-size: 22px;
+    color: white;
+}
+
+/* =======================
+   Botones
+======================= */
+.btn-volver, button, ul.menu li a {
+    background: #2980b9; /* Azul biblioteca */
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px; /* Radio sutil */
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-volver:hover, button:hover, ul.menu li a:hover {
+    background: #1c5980; /* Azul más oscuro al pasar el mouse */
+}
+
+/* =======================
+   Contenedor principal
+======================= */
+.container {
+    padding: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =======================
+   Tablas
+======================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+th {
+    background: #2c3e50; /* Azul oscuro cabecera */
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #ecf0f1; /* Suave resaltado al pasar mouse */
+}
+
+/* =======================
+   Formularios
+======================= */
+form input, form select, form textarea {
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+form button {
+    margin-top: 10px;
+}
+
+/* =======================
+   Mensajes de alerta
+======================= */
+.alert {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #d1ecf1; /* Azul claro suave */
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* =======================
+   Menú del Dashboard
+======================= */
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+ul.menu li {
+    margin-bottom: 10px;
+}
+
+ul.menu li a {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+ul.menu li a:hover {
+    background: #1c5980;
+}
+
+/* =======================
+   Titulos y subtitulos
+======================= */
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+/* =======================
+   Responsive
+======================= */
+@media screen and (max-width: 768px) {
+    .navbar, .container {
+        padding: 15px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    form input, form select, form textarea {
+        max-width: 100%;
+    }
+
+    ul.menu li a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004080;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar h2 {
+    margin: 0;
+}
+.btn-volver {
+    background-color: #f2f2f2;
+    color: #004080;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.btn-volver:hover {
+    background-color: #ddd;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Tabla de préstamos */
+.tabla-prestamos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+        color: black;
+}
+.tabla-prestamos th, .tabla-prestamos td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    color: black;
+}
+.tabla-prestamos th {
+    background-color: #e0e0e0;
+        color: black;
+}
+
+/* Alertas */
+.alert {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #842029;
+    border-radius: 4px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004080;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar h2 {
+    margin: 0;
+}
+.btn-volver {
+    background-color: #f2f2f2;
+    color: #004080;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.btn-volver:hover {
+    background-color: #ddd;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Tabla de libros */
+.tabla-libros {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.tabla-libros th, .tabla-libros td {
+    border: 1px solid #b3c1cb;
+    padding: 8px;
+    text-align: left;
+    color: black;
+}
+.tabla-libros th {
+    background-color: #e0e0e0;
+}
+
+/* Alertas */
+.alert {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #842029;
+    border-radius: 4px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004080;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar h2 {
+    margin: 0;
+}
+.btn-volver {
+    background-color: #f2f2f2;
+    color: #004080;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.btn-volver:hover {
+    background-color: #ddd;
+}
+
+/* Container */
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Formulario */
+.formulario label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+.formulario input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #004080;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-submit:hover {
+    background-color: #003060;
+}
+
+/* Alertas */
+.alert {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+}
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+.alert-error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004080;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar h2 {
+    margin: 0;
+}
+.btn-volver {
+    background-color: #f2f2f2;
+    color: #004080;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.btn-volver:hover {
+    background-color: #ddd;
+}
+
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Menú del dashboard */
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.menu li {
+    margin-bottom: 10px;
+}
+.menu li a {
+    display: block;
+    padding: 10px;
+    background-color: #e0e0e0;
+    color: #004080;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.menu li a:hover {
+    background-color: #c0c0c0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004080;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar h2 {
+    margin: 0;
+}
+.btn-volver {
+    background-color: #f2f2f2;
+    color: #004080;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.btn-volver:hover {
+    background-color: #ddd;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Menú */
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.menu li {
+    margin-bottom: 10px;
+}
+.menu li a {
+    display: block;
+    padding: 10px;
+    background-color: #e0e0e0;
+    color: #004080;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.menu li a:hover {
+    background-color: #c0c0c0;
+}
