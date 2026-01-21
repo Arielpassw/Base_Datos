@@ -31,11 +31,14 @@ CREATE TABLE usuario (
 ALTER TABLE usuario
 ADD COLUMN password_hash VARCHAR(255);
 
-UPDATE usuario 
-SET password_hash = '$2y$10$KbG3Yd1h9UO3mL7k1dQy.eOvF/2cZP9dP5JfY2dVw6hL6d6fW6vAi'
-WHERE correo = 'juan@mail.com';
 
+UPDATE usuario 
+SET password_hash = '$2y$10$4Ex8zFpAzqgwABV680497eBhNp61RGRjizPGxVFa6pDO8wlVK9kBC'
+WHERE correo = 'juan@mail.com';
 SELECT correo, password_hash FROM usuario WHERE correo='juan@mail.com';
+
+select * from usuario u ;
+
 
 -- Tabla libro
 CREATE TABLE libro (
@@ -262,6 +265,125 @@ SELECT * FROM prestamo WHERE estado = 'Prestado';
 -- CON EXPLAIN -- 
 EXPLAIN
 SELECT * FROM prestamo WHERE estado = 'Prestado';
+
+
+-- PRUEBAS --
+
+-- Prueba de rendimiento
+
+EXPLAIN
+SELECT u.nombre, l.titulo, p.fecha_prestamo
+FROM prestamo p
+JOIN usuario u ON p.id_usuario = u.id_usuario
+JOIN libro l ON p.id_libro = l.id_libro
+WHERE p.estado = 'Prestado';
+
+-- Pruebas de carga
+
+INSERT INTO prestamo (fecha_devolucion, estado, id_usuario, id_libro)
+SELECT
+  CURRENT_DATE + 7,
+  'Prestado',
+  1,
+  1
+FROM generate_series(1, 1000);
+
+select * from prestamo;
+
+-- Pruebas de estrés
+
+UPDATE prestamo
+SET estado = 'Devuelto'
+WHERE id_prestamo IN (
+  SELECT id_prestamo FROM prestamo LIMIT 500
+);
+
+
+-- AUDITORÍAS
+
+-- Tabla Auditoría
+CREATE TABLE auditoria (
+    id_auditoria SERIAL PRIMARY KEY,
+    tabla_afectada VARCHAR(50) NOT NULL,
+    operacion VARCHAR(10) NOT NULL,
+    usuario_bd VARCHAR(50) NOT NULL,
+    fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    registro_id INT,
+    descripcion TEXT
+);
+
+-- Función de auditoría (prestamo)
+CREATE OR REPLACE FUNCTION fn_auditoria()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO auditoria (
+        tabla_afectada,
+        operacion,
+        usuario_bd,
+        registro_id,
+        descripcion
+    )
+    VALUES (
+        TG_TABLE_NAME,
+        TG_OP,
+        current_user,
+        CASE
+            WHEN TG_OP = 'DELETE' THEN OLD.id_prestamo
+            ELSE NEW.id_prestamo
+        END,
+        'Operación realizada sobre la tabla ' || TG_TABLE_NAME
+    );
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger para INSERT
+CREATE TRIGGER trg_auditoria_insert
+AFTER INSERT ON prestamo
+FOR EACH ROW
+EXECUTE FUNCTION fn_auditoria();
+
+
+-- Trigger para UPDATE
+CREATE TRIGGER trg_auditoria_update
+AFTER UPDATE ON prestamo
+FOR EACH ROW
+EXECUTE FUNCTION fn_auditoria();
+
+-- Trigger para DELETE
+CREATE TRIGGER trg_auditoria_delete
+AFTER DELETE ON prestamo
+FOR EACH ROW
+EXECUTE FUNCTION fn_auditoria();
+
+
+-- PRUEBAS AUDITORÍA 
+
+-- INSERT de prueba
+INSERT INTO prestamo (fecha_devolucion, estado, id_usuario, id_libro)
+VALUES ('2026-01-25', 'Prestado', 1, 1);
+
+-- UPDATE prestamo
+UPDATE prestamo
+SET estado = 'Devuelto'
+WHERE id_prestamo = 1;
+
+-- DELETE de prueba
+DELETE FROM prestamo
+WHERE id_prestamo = 1;
+
+-- Verificación de auditoría
+SELECT * FROM auditoria ORDER BY fecha DESC;
+
+
+select * from usuario u 
+
+
+
+
+
+
 
 
 
