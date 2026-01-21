@@ -33,7 +33,7 @@ $result = pg_query($conn, $sql);
     <a href="dashboard.php" class="btn-volver"> Volver</a>
 </div>
 
-<!-- CONTENIDO -->
+
 <div class="container">
     <table>
         <tr>

@@ -32,5 +32,6 @@ if (!isset($_SESSION["usuario_id"]) || $_SESSION["tipo_usuario"] !== "Estudiante
     </ul>
 </div>
 
+
 </body>
 </html>

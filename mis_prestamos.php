@@ -18,7 +18,7 @@ if (!in_array($tipo, ['Estudiante'])) {
     exit;
 }
 
-require_once "conexion.php"; // Debe definir $conn
+require_once "conexion.php"; 
 
 // Consulta SQL para obtener los préstamos del usuario
 $sql = "SELECT p.id_prestamo, l.titulo, p.fecha_prestamo, p.fecha_devolucion, 
@@ -55,7 +55,7 @@ if ($result) {
     <a href="dashboard.php" class="btn-volver">Volver</a>
 </div>
 
-<!-- CONTENIDO -->
+
 <div class="container">
     <h3>Bienvenido, <?= htmlspecialchars($nombre) ?></h3>
     <p>Rol: <b><?= htmlspecialchars($tipo) ?></b></p>

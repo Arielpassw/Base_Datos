@@ -16,7 +16,7 @@ $tipo = $_SESSION['tipo_usuario'];
 $msg = "";
 $msg_class = "alert-success";
 
-// ------------------- AGREGAR LIBRO -------------------
+//  AGREGAR LIBRO
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_libro'])) {
 
     $titulo = trim($_POST['titulo']);
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_libro'])) {
         $libro = pg_fetch_assoc($result);
         $id_libro = $libro['id_libro'];
 
-        // ------------------- Insertar autores desde texto -------------------
+        //  Insertar autores desde texto 
         if (!empty($autores_input)) {
             $autores_array = explode(',', $autores_input); // separar por coma
             foreach ($autores_array as $autor_nombre) {
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_libro'])) {
     }
 }
 
-// ------------------- ELIMINAR (Simbólico) -------------------
+//  ELIMINAR 
 if (isset($_GET['eliminar'])) {
     $id_libro = (int) $_GET['eliminar'];
     $sql = "UPDATE libro SET estado='No disponible' WHERE id_libro=$1";
@@ -82,7 +82,7 @@ if (isset($_GET['eliminar'])) {
     }
 }
 
-// ------------------- LISTAR LIBROS -------------------
+//  LISTAR LIBROS 
 $sql_libros = "
 SELECT l.id_libro, l.titulo, l.isbn, l.anio_publicacion, l.ejemplares_totales, 
        l.ejemplares_disponibles, l.estado, c.nombre_categoria,
@@ -102,7 +102,7 @@ if ($result_libros) {
     }
 }
 
-// ------------------- LISTAR CATEGORIAS -------------------
+//  LISTAR CATEGORIAS
 $result_categorias = pg_query($conn, "SELECT id_categoria, nombre_categoria FROM categoria ORDER BY nombre_categoria");
 $categorias = pg_fetch_all($result_categorias);
 ?>
