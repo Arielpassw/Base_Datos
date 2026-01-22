@@ -7,7 +7,7 @@ $password = "Nak8WHKI3SJtGuhuTFHS";
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 
-/*Evitar abrir más de una conexión por request */
+/*Evita abrir mas de una conexion*/
 if (!isset($conn) || !$conn) {
     $conn = pg_connect($conn_string);
 }
@@ -15,3 +15,4 @@ if (!isset($conn) || !$conn) {
 if (!$conn) {
     die(" No se pudo conectar a PostgreSQL en Clever Cloud.");
 }
+

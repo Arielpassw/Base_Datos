@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-/* Validar sesión */
 if (!isset($_SESSION["usuario_id"])) {
     header("Location: login.php");
     exit;
@@ -20,7 +19,6 @@ $nombre = $_SESSION["nombre"] ?? "Usuario";
 </head>
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <h2>Sistema Bibliotecario</h2>
     <a href="logout.php" class="btn-volver">Cerrar sesión</a>
@@ -32,7 +30,7 @@ $nombre = $_SESSION["nombre"] ?? "Usuario";
     <p>Rol: <b><?= htmlspecialchars($tipo) ?></b></p>
 
     <ul class="menu">
-        <!-- PARA TODOS -->
+        <!-- TODOS -->
         <li><a href="listar_libros.php">Ver libros disponibles</a></li>
 
         <!-- ESTUDIANTES -->
