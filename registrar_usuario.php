@@ -50,36 +50,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
     <h2>Registrar Usuario</h2>
     <a href="dashboard.php" class="btn-volver">Volver</a>
 </div>
 
+<!-- CONTENIDO -->
 <div class="container">
     <h3>Bienvenido, <?= htmlspecialchars($nombre) ?> (<?= htmlspecialchars($rol_actual) ?>)</h3>
 
     <?php if (isset($msg)) { ?>
-        <div class="alert"><?= htmlspecialchars($msg) ?></div>
+        <div class="alert alert-success">
+            <?= htmlspecialchars($msg) ?>
+        </div>
     <?php } ?>
 
-    <form method="POST">
-        <input type="text" name="nombre" required placeholder="Nombre">
-        <input type="text" name="apellido" required placeholder="Apellido">
-        <input type="text" name="cedula" required placeholder="Cédula">
-        <input type="email" name="correo" placeholder="Correo">
-        <input type="text" name="telefono" placeholder="Teléfono">
+    <form method="POST" class="formulario">
 
-        <select name="tipo_usuario" required>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" required>
+
+        <label for="cedula">Cédula</label>
+        <input type="text" id="cedula" name="cedula" required>
+
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo">
+
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" name="telefono">
+
+        <label for="tipo_usuario">Tipo de usuario</label>
+        <select name="tipo_usuario" id="tipo_usuario" required>
             <option value="">-- Tipo de usuario --</option>
+
             <?php if ($rol_actual === "Admin") { ?>
                 <option value="Admin">Admin</option>
                 <option value="Docente">Docente</option>
             <?php } ?>
+
             <option value="Estudiante">Estudiante</option>
         </select>
 
-        <input type="password" name="password" required placeholder="Contraseña">
-        <button type="submit">Registrar</button>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn-submit">Registrar</button>
     </form>
 </div>
 

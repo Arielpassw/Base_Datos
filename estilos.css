@@ -74,6 +74,11 @@ h4 {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+/* CENTRAR FORMULARIOS */
+.formulario {
+    max-width: 400px;
+    margin: 0 auto;   /* centra horizontalmente */
+}
 
 .btn-submit {
     background-color: #1f60a0;
@@ -213,4 +218,17 @@ ul.menu li a:hover {
 
 }
 
+/* LOGIN */
+.login-container {
+    max-width: 400px;
+    margin-top: 80px;
+}
 
+.login-container h3 {
+    text-align: center;
+}
+
+/* BOTONES FORMULARIO */
+.acciones .btn {
+    min-width: 140px;
+}

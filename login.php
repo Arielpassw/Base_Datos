@@ -34,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-/*  cerrar conexión si no hubo redirect */
 if (isset($conn)) {
     pg_close($conn);
 }
@@ -46,30 +45,36 @@ if (isset($conn)) {
     <meta charset="UTF-8">
     <title>Login - Biblioteca</title>
     <link rel="stylesheet" href="estilos.css?v=1.0">
-
 </head>
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <h2> Sistema Bibliotecario</h2>
+    <h2>Sistema Bibliotecario</h2>
 </div>
 
 <!-- CONTENIDO -->
-<div class="container" style="max-width:400px;">
+<div class="container login-container">
     <h3>Iniciar sesión</h3>
 
-    <form method="POST">
-        <input type="email" name="correo" required placeholder="Correo">
-        <input type="password" name="password" required placeholder="Contraseña">
-        <button type="submit">Ingresar</button>
-    </form>
+    <form method="POST" class="formulario">
+    <label for="correo">Correo electrónico</label>
+    <input type="email" id="correo" name="correo" required placeholder="Correo">
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" required placeholder="Contraseña">
+
+    <button type="submit" class="btn-submit btn-login">Ingresar</button>
+</form>
+
 
     <?php if (isset($error)) { ?>
-        <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
+        <div class="alert alert-error">
+            <?= htmlspecialchars($error) ?>
+        </div>
     <?php } ?>
-
 </div>
 
 </body>
 </html>
+

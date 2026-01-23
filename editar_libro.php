@@ -68,47 +68,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Editar Libro</title>
-<link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <title>Editar Libro</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-<h3>Editar Libro</h3>
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Editar Libro</h2>
+    <a href="gestionar_libros.php" class="btn-volver">Volver</a>
+</div>
 
-<form method="POST">
-    <input type="text" name="titulo"
-           value="<?= htmlspecialchars($libro['titulo']) ?>" required>
+<!-- CONTENIDO -->
+<div class="container">
 
-    <input type="text" name="isbn"
-           value="<?= htmlspecialchars($libro['isbn']) ?>" required>
+    <h3>Editar información del libro</h3>
 
-    <input type="number" name="anio"
-           value="<?= $libro['anio_publicacion'] ?>" required>
+    <form method="POST" class="formulario">
 
-    <input type="number" name="ejemplares_totales"
-           value="<?= $libro['ejemplares_totales'] ?>" required>
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo"
+               value="<?= htmlspecialchars($libro['titulo']) ?>" required>
 
-    <input type="number" name="ejemplares_disponibles"
-           value="<?= $libro['ejemplares_disponibles'] ?>" required min="0">
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" name="isbn"
+               value="<?= htmlspecialchars($libro['isbn']) ?>" required>
 
-    <select name="estado">
-        <option value="Disponible" <?= $libro['estado']=='Disponible' ? 'selected' : '' ?>>
-            Disponible
-        </option>
-        <option value="No disponible" <?= $libro['estado']=='No disponible' ? 'selected' : '' ?>>
-            No disponible
-        </option>
-    </select>
+        <label for="anio">Año de publicación</label>
+        <input type="number" id="anio" name="anio"
+               value="<?= $libro['anio_publicacion'] ?>" required>
 
-    <div class="acciones">
-        <button type="submit" class="btn btn-editar">
-            Guardar Cambios
-        </button>
+        <label for="total">Ejemplares totales</label>
+        <input type="number" id="total" name="ejemplares_totales"
+               value="<?= $libro['ejemplares_totales'] ?>" required>
 
-    <button type="submit" class="btn btn-cancelar" href="gestionar_libros.php">Cancelar</button>
-    </div>
-</form>
+        <label for="disponibles">Ejemplares disponibles</label>
+        <input type="number" id="disponibles" name="ejemplares_disponibles"
+               value="<?= $libro['ejemplares_disponibles'] ?>" min="0" required>
+
+        <label for="estado">Estado</label>
+        <select name="estado" id="estado">
+            <option value="Disponible" <?= $libro['estado']=='Disponible' ? 'selected' : '' ?>>
+                Disponible
+            </option>
+            <option value="No disponible" <?= $libro['estado']=='No disponible' ? 'selected' : '' ?>>
+                No disponible
+            </option>
+        </select>
+
+        <div class="acciones">
+            <button type="submit" class="btn btn-submit">
+                Guardar cambios
+            </button>
+
+            <a href="gestionar_libros.php" class="btn btn-volver">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+
+</div>
 
 </body>
 </html>
