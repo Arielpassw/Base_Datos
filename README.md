@@ -157,16 +157,19 @@ La interfaz gráfica del Sistema Bibliotecario permite la interacción de los us
 
 ##Credenciales para la interfaz grafica 
 
-**ADMINISTRADOR**
-mari.g@gmail.com
+**ADMINISTRADOR** 
+
+mari.g@gmail.com    
 maria123
 
-**DOCENTE**
-ana@mail.com
+**DOCENTE** 
+
+ana@mail.com    
 admin123
 
 **ESTUDIANTE**
-emilia@gmail.com
+
+emilia@gmail.com    
 emilia123
 
 
