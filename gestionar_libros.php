@@ -79,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_libro'])) {
                 );
             }
         }
-
         $msg = "Libro agregado correctamente.";
         $msg_class = "alert-success";
     } else {
@@ -89,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agregar_libro'])) {
 }
 
 /* ================= ELIMINAR (DESACTIVAR) ================= */
-if (isset($_GET['eliminar'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['eliminar'])) {
     $id_libro = (int) $_GET['eliminar'];
 
     $sql = "UPDATE libro SET estado='No disponible' WHERE id_libro=$1";
@@ -103,6 +102,7 @@ if (isset($_GET['eliminar'])) {
         $msg_class = "alert-error";
     }
 }
+
 
 /* ================= LISTAR LIBROS ================= */
 $sql_libros = "
@@ -177,7 +177,7 @@ $categorias = $result_categorias ? pg_fetch_all($result_categorias) : [];
         <label>Autores (separar con coma):</label>
         <input type="text" name="autores" placeholder="Ej: Gabriel García Márquez, J.K. Rowling">
 
-        <button type="submit" name="agregar_libro" class="btn-submit">Agregar Libro</button>
+        <button type="submit" name="agregar_libro" class="btn-submit" onclick="return confirm('¿Deseas agregar este libro?')">Agregar Libro</button>
     </form>
 
     <h4>Lista de libros</h4>
