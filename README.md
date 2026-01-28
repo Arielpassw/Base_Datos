@@ -155,6 +155,20 @@ La interfaz gráfica del Sistema Bibliotecario permite la interacción de los us
 <img width="466" height="453" alt="image" src="https://github.com/user-attachments/assets/058e1a55-20fe-4a7d-bf6f-f288efab42f3" />
 <img width="539" height="165" alt="image" src="https://github.com/user-attachments/assets/e1e0e351-2bd6-417f-b495-2b186d0b855f" />
 
+##Credenciales para la interfaz grafica 
+
+**ADMINISTRADOR**
+mari.g@gmail.com
+maria123
+
+**DOCENTE**
+ana@mail.com
+admin123
+
+**ESTUDIANTE**
+emilia@gmail.com
+emilia123
+
 
 ## ANEXO FRONTEND
 https://app-ebe8dcd4-ecdc-48a2-9333-bc247672cd12.cleverapps.io/login.php  
